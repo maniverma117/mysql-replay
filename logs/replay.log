@@ -1,0 +1,84 @@
+2026-07-19 12:53:37 | ERROR    | Worker-1        | Worker-1 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 12:53:37 | ERROR    | Worker-2        | Worker-2 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 12:53:37 | ERROR    | Worker-3        | Worker-3 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 12:53:37 | ERROR    | Worker-4        | Worker-4 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 12:53:37 | ERROR    | Worker-5        | Worker-5 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 12:53:37 | ERROR    | Worker-6        | Worker-6 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 12:53:37 | ERROR    | Worker-7        | Worker-7 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 12:53:37 | ERROR    | Worker-8        | Worker-8 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 12:53:37 | ERROR    | Worker-9        | Worker-9 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 12:53:37 | ERROR    | Worker-10       | Worker-10 unable to connect. Retrying in 5 seconds...
+Traceback (most recent call last):
+  File "/Users/ManiV/Downloads/mysql-replay-2/worker.py", line 35, in connect
+    raise RuntimeError("mysql-connector-python is not installed")
+RuntimeError: mysql-connector-python is not installed
+2026-07-19 13:01:06 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 13:11:28 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:34:14 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:34:14 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:36:04 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:36:04 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:38:46 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:38:46 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:38:46 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE
+2026-07-19 14:40:08 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:40:08 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:40:08 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE
+2026-07-19 14:41:32 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:41:32 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-19 14:41:32 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE
+2026-07-20 10:21:16 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:21:16 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT 1
+2026-07-20 10:21:16 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:21:16 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE
+2026-07-20 10:22:04 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:22:04 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:22:04 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE
+2026-07-20 10:22:27 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:22:27 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:22:27 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE
+2026-07-20 10:33:56 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:33:56 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:33:56 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-20 10:33:56 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE
+2026-07-20 10:34:38 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:34:38 | ERROR    | MainThread      | Worker-1 configuration error: mysql-connector-python is not installed
+2026-07-20 10:34:38 | INFO     | MainThread      | Worker-1 connecting to MySQL...
+2026-07-20 10:34:38 | INFO     | MainThread      | Worker-1 connected.
+2026-07-20 10:34:38 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE

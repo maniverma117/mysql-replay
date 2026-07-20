@@ -1,0 +1,210 @@
+"""
+Thread-safe statistics manager for MySQL Buffer Pool Warmer
+"""
+
+from threading import Lock
+from datetime import datetime
+
+
+class StatsManager:
+
+    def __init__(self):
+
+        self.lock = Lock()
+
+        #
+        # Fetcher
+        #
+        self.fetch_cycles = 0
+        self.queries_fetched = 0
+        self.last_fetch_start = None
+        self.last_fetch_end = None
+
+        #
+        # Workers
+        #
+        self.queries_executed = 0
+        self.queries_failed = 0
+
+        self.last_success = None
+        self.last_failure = None
+
+        #
+        # Queue
+        #
+        self.queue_size = 0
+        self.max_queue_size = 0
+
+        #
+        # Execution
+        #
+        self.total_execution_time = 0.0
+        self.max_execution_time = 0.0
+        self.avg_execution_time = 0.0
+
+        #
+        # Workers
+        #
+        self.workers = {}
+
+        #
+        # Service
+        #
+        self.started = datetime.utcnow()
+
+    ####################################################################
+    # FETCHER
+    ####################################################################
+
+    def fetch_started(self, start, end):
+
+        with self.lock:
+
+            self.fetch_cycles += 1
+
+            self.last_fetch_start = start.isoformat()
+
+            self.last_fetch_end = end.isoformat()
+
+    def add_fetched(self, count):
+
+        with self.lock:
+
+            self.queries_fetched += count
+
+    ####################################################################
+    # QUEUE
+    ####################################################################
+
+    def update_queue(self, size):
+
+        with self.lock:
+
+            self.queue_size = size
+
+            if size > self.max_queue_size:
+
+                self.max_queue_size = size
+
+    ####################################################################
+    # WORKERS
+    ####################################################################
+
+    def worker_busy(self, worker_id, sql):
+
+        with self.lock:
+
+            self.workers[worker_id] = {
+
+                "status": "busy",
+
+                "started": datetime.utcnow().isoformat(),
+
+                "query": sql[:200]
+
+            }
+
+    def worker_idle(self, worker_id):
+
+        with self.lock:
+
+            self.workers[worker_id] = {
+
+                "status": "idle",
+
+                "started": None,
+
+                "query": None
+
+            }
+
+    ####################################################################
+    # EXECUTION
+    ####################################################################
+
+    def execution_success(self, elapsed):
+
+        with self.lock:
+
+            self.queries_executed += 1
+
+            self.last_success = datetime.utcnow().isoformat()
+
+            self.total_execution_time += elapsed
+
+            if elapsed > self.max_execution_time:
+
+                self.max_execution_time = elapsed
+
+            if self.queries_executed > 0:
+
+                self.avg_execution_time = (
+
+                    self.total_execution_time /
+
+                    self.queries_executed
+
+                )
+
+    def execution_failed(self):
+
+        with self.lock:
+
+            self.queries_failed += 1
+
+            self.last_failure = datetime.utcnow().isoformat()
+
+    ####################################################################
+    # EXPORT
+    ####################################################################
+
+    def get_stats(self):
+
+        with self.lock:
+
+            return {
+
+                "started": self.started.isoformat(),
+
+                "fetch_cycles": self.fetch_cycles,
+
+                "queries_fetched": self.queries_fetched,
+
+                "queries_executed": self.queries_executed,
+
+                "queries_failed": self.queries_failed,
+
+                "queue_size": self.queue_size,
+
+                "max_queue_size": self.max_queue_size,
+
+                "last_fetch_start": self.last_fetch_start,
+
+                "last_fetch_end": self.last_fetch_end,
+
+                "last_success": self.last_success,
+
+                "last_failure": self.last_failure,
+
+                "avg_execution_time": round(
+
+                    self.avg_execution_time,
+
+                    3
+
+                ),
+
+                "max_execution_time": round(
+
+                    self.max_execution_time,
+
+                    3
+
+                ),
+
+                "workers": self.workers
+
+            }
+
+
+stats = StatsManager()
