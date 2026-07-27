@@ -30,6 +30,18 @@ LOKI_LIMIT = int(
     os.getenv("LOKI_LIMIT", "5000")
 )
 
+LOKI_REQUEST_TIMEOUT = int(
+    os.getenv("LOKI_REQUEST_TIMEOUT", "90")
+)
+
+LOKI_RETRY_COUNT = int(
+    os.getenv("LOKI_RETRY_COUNT", "3")
+)
+
+LOKI_RETRY_DELAY = int(
+    os.getenv("LOKI_RETRY_DELAY", "5")
+)
+
 # -----------------------------------------------------------------------------
 # MySQL Configuration
 # -----------------------------------------------------------------------------
@@ -89,7 +101,7 @@ MYSQL_QUERY_MAX_SECONDS = int(
     )
 )
 
-LOKI_LOOKBACK_HOURS = int(
+LOKI_LOOKBACK_HOURS = float(
     os.getenv(
         "LOKI_LOOKBACK_HOURS",
         "3"

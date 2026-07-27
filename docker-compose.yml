@@ -1,9 +1,14 @@
 services:
   mysql-replay:
     build: .
+    env_file: .env
     environment:
       LOKI_URL: ${LOKI_URL:-http://host.docker.internal:3100}
       LOKI_QUERY: ${LOKI_QUERY:-{job="mysql-general"}}
+      LOKI_LIMIT: ${LOKI_LIMIT:-5000}
+      LOKI_REQUEST_TIMEOUT: ${LOKI_REQUEST_TIMEOUT:-90}
+      LOKI_RETRY_COUNT: ${LOKI_RETRY_COUNT:-3}
+      LOKI_RETRY_DELAY: ${LOKI_RETRY_DELAY:-5}
       MYSQL_HOST: ${MYSQL_HOST:-}
       MYSQL_PORT: ${MYSQL_PORT:-3306}
       MYSQL_DATABASE: ${MYSQL_DATABASE:-}

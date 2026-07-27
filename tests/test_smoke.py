@@ -40,11 +40,13 @@ class SmokeTests(unittest.TestCase):
         with patch('fetcher.requests.get', return_value=DummyResponse()) as mocked_get:
             fetcher._fetch_logs()
 
-        params = mocked_get.call_args.kwargs['params']
+        call_kwargs = mocked_get.call_args.kwargs
+        params = call_kwargs['params']
         self.assertEqual(params['query'], config.LOKI_QUERY)
         self.assertIn('start', params)
         self.assertIn('end', params)
         self.assertGreater(int(params['end']), int(params['start']))
+        self.assertEqual(call_kwargs['timeout'], config.LOKI_REQUEST_TIMEOUT)
 
     def test_worker_connect_returns_false_when_mysql_settings_missing(self):
         worker = worker_module.ReplayWorker(1, Queue())

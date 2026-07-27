@@ -58,9 +58,9 @@ The service reads its configuration from environment variables.
 ### Required variables
 
 - LOKI_URL
-  - Loki endpoint, for example http://loki:3100
+  - Loki endpoint used by the fetcher, for example `http://loki:3100`
 - LOKI_QUERY
-  - LogQL query used to fetch logs
+  - Loki query used to select relevant SQL log lines from logs
 - MYSQL_HOST
   - Target MySQL host
 - MYSQL_PORT
@@ -72,16 +72,30 @@ The service reads its configuration from environment variables.
 - MYSQL_PASSWORD
   - MySQL password
 - WORKERS
-  - Number of replay workers
+  - Number of replay worker threads
 
 ### Optional variables
 
-- POLL_INTERVAL
 - LOKI_LIMIT
+  - Maximum number of log entries fetched from Loki per request
+- LOKI_LOOKBACK_HOURS
+  - How far back to query logs in hours for each fetch cycle
+- LOKI_REQUEST_TIMEOUT
+  - Maximum seconds to wait for Loki to respond
+- LOKI_RETRY_COUNT
+  - Number of retry attempts if a Loki request fails
+- LOKI_RETRY_DELAY
+  - Seconds to wait between Loki retry attempts
+- POLL_INTERVAL
+  - Time in seconds between Loki fetch cycles
 - FLASK_HOST
+  - Host used by the Flask web server
 - FLASK_PORT
+  - Port used by the Flask web server
 - LOG_LEVEL
+  - Logging level for the app
 - LOG_FILE
+  - File path for logs if file logging is enabled
 
 ## Run with Docker Compose
 

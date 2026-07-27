@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 import requests
+from requests.exceptions import RequestException
 
 import config
 from logger import logger
@@ -31,27 +32,37 @@ class Fetcher:
             "end": str(int(end.timestamp() * 1_000_000_000)),
         }
 
-        query_candidates = [config.LOKI_QUERY]
-        if config.LOKI_QUERY and "{" in config.LOKI_QUERY:
-            query_candidates.append("{job=~\".+\"}")
+        query_candidates = []
+        if config.LOKI_QUERY:
+            query_candidates.append(config.LOKI_QUERY)
         else:
-            query_candidates.append("{job=~\".+\"}")
+            query_candidates.append('{job=~".+"}')
 
         last_error = None
         for query in query_candidates:
             params = {"query": query, **base_params}
-            try:
-                response = requests.get(
-                    config.LOKI_URL + "/loki/api/v1/query_range",
-                    params=params,
-                    headers=headers,
-                    timeout=30,
-                )
-                response.raise_for_status()
-                payload = response.json()
-                return payload.get("data", {}).get("result", [])
-            except Exception as exc:
-                last_error = exc
+            for attempt in range(1, config.LOKI_RETRY_COUNT + 1):
+                try:
+                    response = requests.get(
+                        config.LOKI_URL + "/loki/api/v1/query_range",
+                        params=params,
+                        headers=headers,
+                        timeout=config.LOKI_REQUEST_TIMEOUT,
+                    )
+                    response.raise_for_status()
+                    payload = response.json()
+                    return payload.get("data", {}).get("result", [])
+                except RequestException as exc:
+                    last_error = exc
+                    logger.warning(
+                        "Loki query failed (attempt %d/%d) for %s: %s",
+                        attempt,
+                        config.LOKI_RETRY_COUNT,
+                        query,
+                        exc,
+                    )
+                    if attempt < config.LOKI_RETRY_COUNT:
+                        time.sleep(config.LOKI_RETRY_DELAY)
 
         raise last_error or RuntimeError("Unable to fetch logs from Loki")
 

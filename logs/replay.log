@@ -82,3 +82,8 @@ RuntimeError: mysql-connector-python is not installed
 2026-07-20 10:34:38 | INFO     | MainThread      | Worker-1 connecting to MySQL...
 2026-07-20 10:34:38 | INFO     | MainThread      | Worker-1 connected.
 2026-07-20 10:34:38 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE
+2026-07-23 14:50:10 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-23 14:50:10 | ERROR    | MainThread      | Worker-1 configuration error: MYSQL_HOST, MYSQL_DATABASE, MYSQL_USER, and MYSQL_PASSWORD must be configured
+2026-07-23 14:50:10 | INFO     | MainThread      | Worker-1 connecting to MySQL...
+2026-07-23 14:50:10 | INFO     | MainThread      | Worker-1 connected.
+2026-07-23 14:50:10 | WARNING  | MainThread      | [Worker-1] Skipping malformed SQL: SELECT * FROM users WHERE
